@@ -95,8 +95,36 @@ body {
 
 .logo {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.logo-icon:hover {
+    transform: rotate(-5deg) scale(1.05);
+    box-shadow: var(--shadow);
+}
+
+.logo-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.logo-text-wrapper {
+    display: flex;
     flex-direction: column;
-    font-family: 'Outfit', sans-serif;
 }
 
 .logo-text {
@@ -104,6 +132,7 @@ body {
     font-size: 1.5rem;
     letter-spacing: 2px;
     color: var(--primary);
+    font-family: 'Outfit', sans-serif;
 }
 
 .logo-sub {
