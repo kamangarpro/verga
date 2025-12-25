@@ -648,6 +648,34 @@ footer {
     color: var(--accent-light);
 }
 
+.phone-numbers a {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    /* English font for numbers */
+    letter-spacing: 1px;
+}
+
+.social-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.vpn-note {
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+.msg-hint {
+    font-size: 0.75rem !important;
+    /* Force smaller size */
+    opacity: 0.7;
+    margin: 0 !important;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
