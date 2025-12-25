@@ -17,6 +17,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mobile Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    const body = document.body;
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (navLinks.classList.contains('active')) {
+            body.style.overflow = 'hidden';
+            mobileOverlay.style.display = 'block';
+        } else {
+            body.style.overflow = '';
+            setTimeout(() => {
+                mobileOverlay.style.display = 'none';
+            }, 300);
+        }
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        body.style.overflow = '';
+        setTimeout(() => {
+            mobileOverlay.style.display = 'none';
+        }, 300);
+    }
+
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleMenu);
+    }
+
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking on a link
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -28,5 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+    });
+
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            closeMenu();
+        }
     });
 });
