@@ -25,12 +25,35 @@
 
     /* Effects */
     --glass: rgba(255, 255, 255, 0.85);
+    /* Dark Mode Variable Overrides */
+    --bg-main: var(--light);
+    --bg-card: white;
+    --text-main: var(--dark);
+    --text-muted: var(--gray);
+    --border-color: rgba(0, 0, 0, 0.05);
+
     --glass-dark: rgba(26, 77, 46, 0.05);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
     --shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
+}
+
+[data-theme="dark"] {
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass: rgba(18, 18, 18, 0.85);
+    --light: #121212;
+    --light-cream: #1a1a1a;
+    --dark: #f3f4f6;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+    --gradient-hero: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
 }
 
 * {
@@ -45,9 +68,9 @@ html {
 
 body {
     font-family: 'Vazirmatn', sans-serif;
-    color: var(--dark);
+    color: var(--text-main);
     line-height: 1.6;
-    background-color: var(--light);
+    background-color: var(--bg-main);
     overflow-x: hidden;
     width: 100%;
 }
@@ -99,6 +122,32 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary);
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .theme-toggle {
+    color: #ffd700;
 }
 
 .logo {
@@ -330,7 +379,7 @@ img {
 }
 
 .section-desc {
-    color: var(--gray);
+    color: var(--text-muted);
     margin-bottom: 4rem;
     font-size: 1.1rem;
     max-width: 700px;
@@ -346,11 +395,11 @@ img {
 
 .feature-card {
     padding: 3rem 2rem;
-    background: white;
+    background: var(--bg-card);
     border-radius: 24px;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .feature-card:hover {
@@ -375,18 +424,18 @@ img {
 .feature-card h3 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
-    color: var(--primary-dark);
+    color: var(--primary);
 }
 
 .feature-card p {
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.7;
 }
 
 /* Factory Section */
 .factory-info {
     padding: 8rem 0;
-    background: white;
+    background: var(--bg-main);
 }
 
 .process-list {
@@ -450,7 +499,7 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: white;
+    background: var(--bg-card);
     color: var(--primary);
     padding: 0.8rem 1.2rem;
     border-radius: 12px;
@@ -458,6 +507,7 @@ img {
     font-weight: 600;
     transition: var(--transition-fast);
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
 .map-btn:hover {
@@ -468,8 +518,8 @@ img {
 /* Footer */
 footer {
     padding: 4rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    background: var(--light);
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-main);
 }
 
 .social-links {
@@ -480,7 +530,7 @@ footer {
 }
 
 .social-links a {
-    color: var(--gray);
+    color: var(--text-muted);
     transition: var(--transition);
 }
 
@@ -504,7 +554,7 @@ footer {
 /* Gallery Section */
 .gallery-section {
     padding: 8rem 0;
-    background: var(--light-cream);
+    background: var(--bg-main);
 }
 
 .gallery-grid {
@@ -747,7 +797,7 @@ footer {
 /* Articles Section */
 .articles-section {
     padding: 8rem 0;
-    background: white;
+    background: var(--bg-main);
 }
 
 .articles-grid {
@@ -758,12 +808,12 @@ footer {
 }
 
 .article-card {
-    background: white;
+    background: var(--bg-card);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
 }
 
 .article-card:hover {
@@ -793,7 +843,7 @@ footer {
 
 .article-content h3 {
     font-size: 1.3rem;
-    color: var(--primary-dark);
+    color: var(--primary);
     margin-bottom: 1rem;
     line-height: 1.4;
 }

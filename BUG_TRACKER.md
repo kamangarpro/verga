@@ -5,6 +5,8 @@
 - **Rule 2:** Avoid fixed `width` or `height` on containers; use `max-width: 100%` and `object-fit: cover` for images.
 - **Rule 3:** Navigation menu must be fully accessible and usable on mobile (check hamburger menu transitions).
 - **Rule 4:** Font sizes should be fluid (using `rem` or media queries) so they don't overflow on small screens.
+- **Rule 5:** Always maintain Dark Mode support using CSS variables. All new components must have defined styles for both themes.
+- **Rule 6:** Theme preference must be saved in `localStorage` for user persistence.
 
 ## Active Bugs
 1. **Responsiveness Issue:** Layout breaks on Android/Mobile devices. Hero section and grids overlap or overflow. [Status: Fixing]
