@@ -319,6 +319,17 @@ footer {
     color: var(--primary);
 }
 
+.phone-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.phone-numbers span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
 /* Founder Section */
 .founder-section {
     padding: 8rem 0;
