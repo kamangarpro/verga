@@ -122,4 +122,33 @@ document.addEventListener('DOMContentLoaded', () => {
             window.lucide.createIcons();
         }
     }
+
+    // Scroll Reveal Animation Logic
+    const revealElements = document.querySelectorAll(
+        '.section-title, .section-desc, .hero-content, .hero-visual, .feature-card, .gallery-item, .article-card, .founder-content, .guarantee-card, .factory-image, .factory-content, .location-card, .contact-info'
+    );
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: Stop observing once revealed to improve performance
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15, // Trigger when 15% of the element is visible
+        rootMargin: "0px"
+    });
+
+    revealElements.forEach((el, index) => {
+        el.classList.add('reveal');
+        // Add staggered delays for grid items
+        if (el.classList.contains('feature-card') || el.classList.contains('gallery-item') || el.classList.contains('article-card')) {
+             // Simple stagger based on DOM order or could be more complex
+             // For now, let's just let them naturally reveal as they scroll
+        }
+        revealObserver.observe(el);
+    });
 });
